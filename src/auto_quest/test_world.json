@@ -1,0 +1,92 @@
+{
+    "species": [
+        {
+            "name": "slime",
+            "attributes": {
+                "health": 100,
+                "strength": 25,
+                "smarts": 25,
+                "speed": 50
+            },
+            "actions": {
+                "1": "attack",
+                "2": "heal",
+                "3": "defend"
+            }
+        },
+        {
+            "name": "zombie",
+            "attributes": {
+                "health": 100,
+                "strength": 50,
+                "smarts": 25,
+                "speed": 25
+            },
+            "actions": {
+                "1": "attack",
+                "2": "heal",
+                "3": "defend"
+            }
+        },
+        {
+            "name": "imp",
+            "attributes": {
+                "health": 100,
+                "strength": 25,
+                "smarts": 50,
+                "speed": 25
+            },
+            "actions": {
+                "1": "attack",
+                "2": "heal",
+                "3": "defend"
+            }
+        },
+        {
+            "name": "wolf",
+            "attributes": {
+                "health": 100,
+                "strength": 40,
+                "smarts": 20,
+                "speed": 40
+            },
+            "actions": {
+                "1": "attack",
+                "2": "heal",
+                "3": "defend"
+            }
+        }
+    ],
+    "actions": [
+        {
+            "name": "attack",
+            "effects": [
+                {
+                    "type": "attack",
+                    "power": 50,
+                    "accuracy": 95
+                }
+            ],
+            "priority": 0
+        },
+        {
+            "name": "heal",
+            "effects": [
+                {
+                    "type": "heal",
+                    "power": 50
+                }
+            ],
+            "priority": 0
+        },
+        {
+            "name": "defend",
+            "effects": [
+                {
+                    "type": "defend"
+                }
+            ],
+            "priority": 5
+        }
+    ]
+}
