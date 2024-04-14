@@ -46,6 +46,10 @@ class Character:
     def name(self):
         return self._character['name']
 
+    @name.setter
+    def name(self, name):
+        self._character['name'] = name
+
     @property
     def species(self):
         return self._species['name']
@@ -75,12 +79,27 @@ class Character:
         return self._character['attributes']['speed']
 
     @property
+    def attribute_total(self):
+        return self.strength + self.smarts + self.speed
+
+    @property
+    def experience(self):
+        return self._character['experience']
+
+    @property
+    def experience_value(self):
+        return self.level * self.attribute_total
+
+    @property
     def actions(self):
         return copy.copy(self._character['actions'])
 
     @property
     def conditions(self):
         return copy.copy(self._status['conditions'])
+
+    def forget_action(self, action):
+        self._character['actions'].remove(action)
 
     def damage(self, value):
         """ Decreases health so it won't be negative. """
@@ -121,3 +140,8 @@ class Character:
         if self.level in self._species['actions']:
             self._character['actions'].append(
                 self._species['actions'][self.level])
+
+    def gain_experience(self, experience):
+        self._character['experience'] += experience
+        while self.experience > self.level * 1000:
+            self.gain_level()

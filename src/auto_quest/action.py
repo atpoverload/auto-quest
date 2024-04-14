@@ -126,6 +126,17 @@ class Action:
         return logs
 
 
+class DoNothing:
+    def __init__(self):
+        self.priority = 100
+
+    def act(self, user, target):
+        return [f'{user.name} did nothing']
+
+
+NOTHING = DoNothing()
+
+
 def run_turn(player, player_action, enemy, enemy_action):
     # get the turn order
     order = []
@@ -142,6 +153,7 @@ def run_turn(player, player_action, enemy, enemy_action):
     elif player.speed < enemy.speed:
         order = [enemy, player]
         action_order = [enemy_action, player_action]
+    # TODO: find a way to provide a custom random engine
     elif random() < 0.5:
         order = [player, enemy]
         action_order = [player_action, enemy_action]
